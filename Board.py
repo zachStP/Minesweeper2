@@ -46,6 +46,7 @@ class Board:
 
     def changeDataAtTo(self, r, c, value):
         self.data[r][c] = value
+        self.updateNeighbors(r, c)
 
     def moveMineAtTo(self, currentR, currentC, newR, newC):
         if self.isValid(self.data, currentR, currentC) and self.isValid(self.data, newR, newC):

@@ -56,7 +56,6 @@ class Player:
                 elif(board.isValid(board.data, self.y, self.x + 2)):
                     board.moveMineAtTo(self.y, self.x + 1, self.y, self.x + 2)
         if dir == "left":
-            print(board.isMine(board.data, self.y, self.x - 1))
             if(board.isMine(board.data, self.y, self.x - 1)):
                 if(board.isMine(board.data, self.y, self.x - 2)):
                     board.changeDataAtTo(self.y, self.x - 2, 10)
