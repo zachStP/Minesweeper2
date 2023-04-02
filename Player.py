@@ -82,5 +82,5 @@ class Player:
                 board.display[self.y][self.x + 1] = not board.display[self.y][self.x + 1]
         if dir == "left":
             if(board.isValid(board.data, self.y, self.x - 1)):
-                board.data[self.y][self.x - 1] = not board.data[self.y][self.x - 1]
+                board.display[self.y][self.x - 1] = not board.display[self.y][self.x - 1]
                 
