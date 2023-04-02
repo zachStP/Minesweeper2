@@ -21,7 +21,7 @@ b_pad_x: int = 4
 b_pad_y: int = 4
 
 pg.init()
-pg.display.set_caption("Minesweeper 2")
+pg.display.set_caption("Minesweeper Sprint")
 
 clock = pg.time.Clock()
 
@@ -39,7 +39,7 @@ for i in range(8):
 pg.display.set_icon(sprite_c)
 
 def ico_scale():
-    global numarr, sprite, sprite_c, player_ico
+    global numarr, sprite, sprite_c, player_ico, flag
     sprite = pg.transform.smoothscale(pg.image.load("assets/sprite.png"), (tile_size, tile_size)).convert_alpha()
     sprite_c = pg.transform.smoothscale(pg.image.load("assets/sprite_canberry.png"), (tile_size, tile_size)).convert_alpha()
     flag = pg.transform.smoothscale(pg.image.load("assets/flag.png"), (tile_size, tile_size)).convert_alpha()
@@ -143,7 +143,7 @@ def draw_board(board_dat: list[list[int]], board_vis: list[list[bool]], player):
                     (posx + t_padding / 2, posy + t_padding / 2))
             
             elif board[row][col] <= -1:
-                pg.draw.rect(display, (100, 100, 100), (posx + t_padding / 2, posy + t_padding / 2,
+                pg.draw.rect(display, (255, 255, 255), (posx + t_padding / 2, posy + t_padding / 2,
                     tile_size - t_padding, tile_size - t_padding))
                 display.blit(flag,
                     (posx + t_padding / 2, posy + t_padding / 2))
