@@ -38,7 +38,7 @@ def ico_scale():
     global numarr, sprite, crush, player_ico
     sprite = pg.transform.smoothscale(pg.image.load("assets/sprite.png"), (tile_size, tile_size)).convert_alpha()
 
-    player_ico = pg.transform.smoothscale(pg.image.load("assets/player.png"), (tile_size, tile_size)).convert_alpha()
+    player_ico = pg.transform.smoothscale(pg.image.load("assets/player.png"), (tile_size - t_padding, tile_size - t_padding)).convert_alpha()
 
     for i in range(8):
         numarr[i] = pg.transform.smoothscale(pg.image.load("assets/num" + str(i + 1) + ".png"), (tile_size, tile_size)).convert_alpha()
@@ -94,6 +94,12 @@ def draw_board(board_dat: list[list[int]], board_vis: list[list[bool]], player):
             # draw border
             pg.draw.rect(display, (50, 50, 50), (posx-1, posy-1, tile_size+1, tile_size+1))
             
+            if row == 0 and col == 0:
+                if board[player.y][player.x] >= 1 and board[player.y][player.x] <= 8:
+                    display.blit(numarr[board[player.y][player.x] - 1],
+                        (b_pad_x + t_padding / 2, b_pad_y + t_padding / 2))
+                continue
+
             # draw tile 
             # 99 = not clear
             if board[row][col] == 99:
@@ -111,10 +117,10 @@ def draw_board(board_dat: list[list[int]], board_vis: list[list[bool]], player):
                 display.blit(sprite,
                     (posx + t_padding / 2, posy + t_padding / 2))
             # 1-8 = clear
-            elif board[row][col] != 9:
+            elif board[row][col] >= 1 and board[row][col] <= 8:
                 pg.draw.rect(display, (100, 100, 100), (posx + t_padding / 2, posy + t_padding / 2,
                     tile_size - t_padding, tile_size - t_padding))
-                
+                print(board[row][col])
                 display.blit(numarr[board[row][col] - 1],
                     (posx + t_padding / 2, posy + t_padding / 2))
         
@@ -125,11 +131,3 @@ def draw_board(board_dat: list[list[int]], board_vis: list[list[bool]], player):
     display.blit(player_ico,
         (player.x * tile_size + t_padding / 2 + b_pad_x, player.y * tile_size + t_padding / 2 + b_pad_y))
     
-    if board[player.y][player.x] >= 1 and board[player.y][player.x] <= 8:
-        display.blit(numarr[board[player.y][player.x] - 1],
-           (b_pad_x + t_padding / 2, b_pad_y + t_padding / 2))
-        
-        pg.display.set_caption("Minesweeper " + str(board[player.y][player.x]))
-        pg.display.set_icon(numarr[board[player.y][player.x] - 1])
-    else:
-        pg.display.set_caption("Minesweeper -")
