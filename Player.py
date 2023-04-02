@@ -62,7 +62,10 @@ class Player:
                 return 3
             elif(board.isValid(board.data, cellWithDis2[0], cellWithDis2[1])):
                 board.moveMineAtTo(cellWithDis1[0], cellWithDis1[1], cellWithDis2[0], cellWithDis2[1])
+            else:
+                board.changeDataAtTo(cellWithDis1[0], cellWithDis1[1], 10)
                 return 1
+            
         else:
             return -1
 
