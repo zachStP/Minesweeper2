@@ -38,15 +38,27 @@ while True:
         if player.isDead:
             initGame()
             continue        
+        
+        print(board.isMine(board.data, player.y, player.x - 1))
 
-        if keys[gr.pg.K_a]:
-            player.moveLeft()
-        elif keys[gr.pg.K_d]:
-            player.moveRight()
-        elif keys[gr.pg.K_w]:
-            player.moveUp()
-        elif keys[gr.pg.K_s]:
-            player.moveDown()
+        if keys[gr.pg.K_SPACE]:
+            if keys[gr.pg.K_a]:
+                player.pushMine(board, "left")
+            elif keys[gr.pg.K_d]:
+                player.pushMine(board, "right")
+            elif keys[gr.pg.K_w]:
+                player.pushMine(board, "up")
+            elif keys[gr.pg.K_s]:
+                player.pushMine(board, "down")
+        else:
+            if keys[gr.pg.K_a]:
+                player.moveLeft()
+            elif keys[gr.pg.K_d]:
+                player.moveRight()
+            elif keys[gr.pg.K_w]:
+                player.moveUp()
+            elif keys[gr.pg.K_s]:
+                player.moveDown()
         
         game.update()
     elif not (keys[gr.pg.K_a] or keys[gr.pg.K_d] or keys[gr.pg.K_w] or keys[gr.pg.K_s]):

@@ -1,4 +1,4 @@
-from Board import Board
+import Board
 
 class Player:
     def __init__(self, x:int, y:int):
@@ -32,32 +32,33 @@ class Player:
 
     def kill(self):
         self.isDead = True
-#Board.changeMineAtTo(board, self.y - 1, self.x, self.y - 2, self.x)
+#board.changeMineAtTo(board, self.y - 1, self.x, self.y - 2, self.x)
     def pushMine(self, board, dir):
         if dir == "up":
-            if(Board.isMine(board, self.y - 1, self.x)):
-                if(Board.isMine(board, self.y - 2, self.x)):
-                    Board.changeDataAtTo(board, self.y - 2, self.x, 10)
-                elif(Board.isValid(board, self.y - 2, self.x)):
-                    Board.moveMineAtTo(board, self.y - 1, self.x, self.y - 2, self.x)
+            if(board.isMine(board.data, self.y - 1, self.x)):
+                if(board.isMine(board.data, self.y - 2, self.x)):
+                    board.changeDataAtTo(board.data, self.y - 2, self.x, 10)
+                elif(board.isValid(board.data, self.y - 2, self.x)):
+                    board.moveMineAtTo(board.data, self.y - 1, self.x, self.y - 2, self.x)
                     
         if dir == "down":
-            if(Board.isMine(board, self.y + 1, self.x)):
-                if(Board.isMine(board, self.y + 2, self.x)):
-                    Board.changeDataAtTo(board, self.y + 2, self.x, 10)
-                elif(Board.isValid(board, self.y + 2, self.x)):
-                    Board.moveMineAtTo(board, self.y + 1, self.x, self.y + 2, self.x)
+            if(board.isMine(board.data, self.y + 1, self.x)):
+                if(board.isMine(board.data, self.y + 2, self.x)):
+                    board.changeDataAtTo(board.data, self.y + 2, self.x, 10)
+                elif(board.isValid(board.data, self.y + 2, self.x)):
+                    board.moveMineAtTo(board.data, self.y + 1, self.x, self.y + 2, self.x)
 
         if dir == "right":
-            if(Board.isMine(board, self.y, self.x + 1)):
-                if(Board.isMine(board, self.y, self.x + 2)):
-                    Board.changeDataAtTo(board, self.y, self.x + 2, 10)
-                elif(Board.isValid(board, self.y, self.x + 2)):
-                    Board.moveMineAtTo(board, self.y, self.x + 1, self.y, self.x + 2)
+            if(board.isMine(board.data, self.y, self.x + 1)):
+                if(board.isMine(board.data, self.y, self.x + 2)):
+                    board.changeDataAtTo(board.data, self.y, self.x + 2, 10)
+                elif(board.isValid(board.data, self.y, self.x + 2)):
+                    board.moveMineAtTo(board.data, self.y, self.x + 1, self.y, self.x + 2)
         if dir == "left":
-            if(Board.isMine(board, self.y, self.x - 1)):
-                if(Board.isMine(board, self.y, self.x - 2)):
-                    Board.changeDataAtTo(board, self.y, self.x - 2, 10)
-                elif(Board.isValid(board, self.y, self.x - 2)):
-                    Board.moveMineAtTo(board, self.y, self.x + 1, self.y, self.x - 2)
+            print(board.isMine(board.data, self.y, self.x - 1))
+            if(board.isMine(board.data, self.y, self.x - 1)):
+                if(board.isMine(board.data, self.y, self.x - 2)):
+                    board.changeDataAtTo(board.data, self.y, self.x - 2, 10)
+                elif(board.isValid(board.data, self.y, self.x - 2)):
+                    board.moveMineAtTo(board.data, self.y, self.x + 1, self.y, self.x - 2)
 

@@ -95,9 +95,12 @@ def draw_board(board_dat: list[list[int]], board_vis: list[list[bool]], player):
             pg.draw.rect(display, (50, 50, 50), (posx-1, posy-1, tile_size+1, tile_size+1))
             
             if row == 0 and col == 0:
+                pg.draw.rect(display, (0, 100, 0), (b_pad_x + t_padding / 2, b_pad_y + t_padding / 2,
+                        tile_size - t_padding, tile_size - t_padding))
                 if board[player.y][player.x] >= 1 and board[player.y][player.x] <= 8:
                     display.blit(numarr[board[player.y][player.x] - 1],
                         (b_pad_x + t_padding / 2, b_pad_y + t_padding / 2))
+                    
                 continue
 
             # draw tile 
@@ -120,7 +123,6 @@ def draw_board(board_dat: list[list[int]], board_vis: list[list[bool]], player):
             elif board[row][col] >= 1 and board[row][col] <= 8:
                 pg.draw.rect(display, (100, 100, 100), (posx + t_padding / 2, posy + t_padding / 2,
                     tile_size - t_padding, tile_size - t_padding))
-                print(board[row][col])
                 display.blit(numarr[board[row][col] - 1],
                     (posx + t_padding / 2, posy + t_padding / 2))
         
