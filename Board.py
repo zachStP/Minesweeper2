@@ -22,7 +22,7 @@ class Board:
         if(self.isValid(plane, r, c)):    
             if(plane[r][c] == 9):
                 return True
-            return False
+        return False
     
     def countNeighborMines(self, r, c):
         count = 0
