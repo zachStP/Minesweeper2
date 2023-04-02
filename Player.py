@@ -68,6 +68,7 @@ class Player:
             
         else:
             return -1
+        return 0
 
     def flag(self, board, dir):
         print("SAD")
