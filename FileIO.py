@@ -1,25 +1,20 @@
+import Board
 
+class FileIO:
+    def __init__(self):
+        self.data = []
+        self.f = open("layout.txt")
+        self.file = self.f.read
 
-
-class fileIO:
-
-    def setBoard():
-        board = Board()
-    
-        f = open("layout.txt")
-        file = f.read
-        
-        r = 0
-        c = 0
-
-        for line in file:
+        for line in self.file:
+            row = []
             for ch in line:
-                board.data[r][c] = int(ch)
-                c+=1
-            r+=1
-
-        f.close()
-
-    def getBoard():
-        return board
+                row.append(int(ch))
+            self.data.append(row)
+        
+        self.b = Board(self.data)
+        self.f.close()
+    
+    def getBoard(self):
+        return self.b
     
