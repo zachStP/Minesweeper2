@@ -1,4 +1,5 @@
-import Board
+if __name__ == "__main__":
+    import main
 
 class Player:
     def __init__(self, x:int, y:int):

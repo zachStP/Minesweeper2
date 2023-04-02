@@ -20,7 +20,7 @@ class Board:
 
     def isMine(self, plane, r, c):
         if(self.isValid(plane, r, c)):    
-            if(plane[r][c] == "9"):
+            if(plane[r][c] == 9):
                 return True
             return False
     
