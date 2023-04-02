@@ -25,7 +25,7 @@ class FileIO:
         for r in range(len(self.data)):
             for c in range(len(self.data[r])):
                 count = 0
-                if(self.data[r][c] == 0):
+                if(self.data[r][c] != 9):
                     neighbors = [(r - 1, c - 1), (r - 1, c   ), (r - 1, c + 1),
                                 (r    , c - 1),                (r    , c + 1),
                                 (r + 1, c - 1), (r + 1, c   ), (r + 1, c + 1)]
@@ -36,8 +36,6 @@ class FileIO:
                     self.data[r][c] = count
         self.b = Board(self.data)
         f.close()
-
-    
     
     def getBoard(self):
         return self.b
