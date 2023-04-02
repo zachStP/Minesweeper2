@@ -20,6 +20,8 @@ t_padding: int = 4
 b_pad_x: int = 4
 b_pad_y: int = 4
 
+debug = False
+
 pg.init()
 pg.display.set_caption("Minesweeper Sprint")
 
@@ -85,7 +87,7 @@ def draw_board(board_dat: list[list[int]], board_vis: list[list[bool]], player):
     for row in range(len(board_vis)):
         r = []
         for col in range(len(board_vis[row])):
-            if board_vis[row][col] == None:
+            if board_vis[row][col] == None or debug:
                 r.append(board_dat[row][col])
             elif board_vis[row][col]:
                 r.append(-1)

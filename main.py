@@ -39,8 +39,6 @@ while True:
             initGame()
             continue        
         
-        print(board.isMine(board.data, player.y, player.x - 1))
-
         if keys[gr.pg.K_x]:
             if keys[gr.pg.K_a] and board.display[player.y][player.x - 1] != None:
                 player.flag(board, "left")

@@ -71,7 +71,6 @@ class Player:
         return 0
 
     def flag(self, board, dir):
-        print("SAD")
         if dir == "up":
             if(board.isValid(board.data, self.y - 1, self.x)):
                 board.display[self.y - 1][self.x] = not board.display[self.y - 1][self.x]
