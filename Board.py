@@ -58,5 +58,5 @@ class Board:
             return False
         
     def show(self, x:int, y:int):
-        self.display[y][x] = True
+        self.display[y][x] = None
 

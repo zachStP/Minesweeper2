@@ -63,6 +63,7 @@ class Player:
                 board.moveMineAtTo(cellWithDis1[0], cellWithDis1[1], cellWithDis2[0], cellWithDis2[1])
 
     def flag(self, board, dir):
+        print("SAD")
         if dir == "up":
             if(board.isValid(board.data, self.y - 1, self.x)):
                 board.display[self.y - 1][self.x] = not board.display[self.y - 1][self.x]

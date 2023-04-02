@@ -30,16 +30,19 @@ display = pg.display.set_mode((width, height), pg.RESIZABLE)
 player_ico = pg.image.load("assets/player.png").convert_alpha()
 sprite = pg.transform.smoothscale(pg.image.load("assets/sprite.png"), (64, 64,)).convert_alpha()
 sprite_c = pg.transform.smoothscale(pg.image.load("assets/sprite_canberry.png"), (64, 64,)).convert_alpha()
-
+flag = pg.transform.smoothscale(pg.image.load("assets/flag.png"), (64, 64,)).convert_alpha()
 
 numarr = []
 for i in range(8):
     numarr.append(pg.transform.smoothscale(pg.image.load("assets/num" + str(i + 1) + ".png"), (64, 64,)).convert_alpha())
 
+pg.display.set_icon(sprite_c)
+
 def ico_scale():
     global numarr, sprite, sprite_c, player_ico
     sprite = pg.transform.smoothscale(pg.image.load("assets/sprite.png"), (tile_size, tile_size)).convert_alpha()
     sprite_c = pg.transform.smoothscale(pg.image.load("assets/sprite_canberry.png"), (tile_size, tile_size)).convert_alpha()
+    flag = pg.transform.smoothscale(pg.image.load("assets/flag.png"), (tile_size, tile_size)).convert_alpha()
 
     player_ico = pg.transform.smoothscale(pg.image.load("assets/player.png"), (tile_size - t_padding, tile_size - t_padding)).convert_alpha()
 
@@ -82,8 +85,10 @@ def draw_board(board_dat: list[list[int]], board_vis: list[list[bool]], player):
     for row in range(len(board_vis)):
         r = []
         for col in range(len(board_vis[row])):
-            if board_vis[row][col] or True:
+            if board_vis[row][col] == None:
                 r.append(board_dat[row][col])
+            elif board_vis[row][col]:
+                r.append(-1)
             else:
                 r.append(99)
         board.append(r)
@@ -130,10 +135,17 @@ def draw_board(board_dat: list[list[int]], board_vis: list[list[bool]], player):
                 display.blit(sprite_c,
                     (posx + t_padding / 2, posy + t_padding / 2))
             # 1-8 = clear
+            
             elif board[row][col] >= 1 and board[row][col] <= 8:
                 pg.draw.rect(display, (100, 100, 100), (posx + t_padding / 2, posy + t_padding / 2,
                     tile_size - t_padding, tile_size - t_padding))
                 display.blit(numarr[board[row][col] - 1],
+                    (posx + t_padding / 2, posy + t_padding / 2))
+            
+            elif board[row][col] <= -1:
+                pg.draw.rect(display, (100, 100, 100), (posx + t_padding / 2, posy + t_padding / 2,
+                    tile_size - t_padding, tile_size - t_padding))
+                display.blit(flag,
                     (posx + t_padding / 2, posy + t_padding / 2))
         
         # end for col
