@@ -10,4 +10,5 @@ class Board:
             self.display = [[False for j in range(16)] for i in range(16)]
 
     def show(self, x:int, y:int):
-        self.display[x][y] = True
+        self.display[y][x] = True
+
