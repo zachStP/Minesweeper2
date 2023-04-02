@@ -41,37 +41,19 @@ class Player:
                           (self.y, self.x + 2), (self.y, self.x - 2)]
         if dir == "up":
             cellWithDis1 = cellsAtDirWithDis1[0]
+            cellWithDis2 = cellsAtDirWithDis2[0]
+   
+        if dir == "down":
+            cellWithDis1 = cellsAtDirWithDis1[1]
             cellWithDis2 = cellsAtDirWithDis2[1]
 
-            """if(board.isMine(board.data, self.y - 1, self.x)):
-                if(board.isMine(board.data, self.y - 2, self.x)):
-                    board.changeDataAtTo(self.y - 1, self.x, 0)
-                    board.changeDataAtTo(self.y - 2, self.x, 10)
-                elif(board.isValid(board.data, self.y - 2, self.x)):
-                    board.moveMineAtTo(self.y - 1, self.x, self.y - 2, self.x)
-            """        
-        if dir == "down":
-            if(board.isMine(board.data, self.y + 1, self.x)):
-                if(board.isMine(board.data, self.y + 2, self.x)):
-                    board.changeDataAtTo(self.y + 1, self.x, 0)
-                    board.changeDataAtTo(self.y + 2, self.x, 10)
-                elif(board.isValid(board.data, self.y + 2, self.x)):
-                    board.moveMineAtTo(self.y + 1, self.x, self.y + 2, self.x)
-
         if dir == "right":
-            if(board.isMine(board.data, self.y, self.x + 1)):
-                if(board.isMine(board.data, self.y, self.x + 2)):
-                    board.changeDataAtTo(self.y, self.x + 1, 0)
-                    board.changeDataAtTo(self.y, self.x + 2, 10)
-                elif(board.isValid(board.data, self.y, self.x + 2)):
-                    board.moveMineAtTo(self.y, self.x + 1, self.y, self.x + 2)
+            cellWithDis1 = cellsAtDirWithDis1[2]
+            cellWithDis2 = cellsAtDirWithDis2[2]
+
         if dir == "left":
-            if(board.isMine(board.data, self.y, self.x - 1)):
-                if(board.isMine(board.data, self.y, self.x - 2)):
-                    board.changeDataAtTo(self.y, self.x - 1, 0)
-                    board.changeDataAtTo(self.y, self.x - 2, 10)
-                elif(board.isValid(board.data, self.y, self.x - 2)):
-                    board.moveMineAtTo(self.y, self.x - 1, self.y, self.x - 2)
+            cellWithDis1 = cellsAtDirWithDis1[3]
+            cellWithDis2 = cellsAtDirWithDis2[3]
 
         if(board.isMine(board.data, cellWithDis1[0], cellWithDis1[1])):
             if(board.isMine(board.data, cellWithDis2[0], cellWithDis2[1])):
