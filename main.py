@@ -52,16 +52,16 @@ while True:
                 player.flag(board, "down")
         elif keys[gr.pg.K_SPACE]:
             if keys[gr.pg.K_a]:
-                player.pushMine(board, "left")
+                game.points += player.pushMine(board, "left")
                 board.show(player.x - 1, player.y)
             elif keys[gr.pg.K_d]:
-                player.pushMine(board, "right")
+                game.points += player.pushMine(board, "right")
                 board.show(player.x + 1, player.y)
             elif keys[gr.pg.K_w]:
-                player.pushMine(board, "up")
+                game.points += player.pushMine(board, "up")
                 board.show(player.x, player.y - 1)
             elif keys[gr.pg.K_s]:
-                player.pushMine(board, "down")
+                game.points += player.pushMine(board, "down")
                 board.show(player.x, player.y + 1)
         else:
             if keys[gr.pg.K_a]:
@@ -74,6 +74,7 @@ while True:
                 player.moveDown()
         
         game.update()
+        gr.pg.display.set_caption("Minesweeper Sprint - Score: " + str(game.points))
     elif not (keys[gr.pg.K_a] or keys[gr.pg.K_d] or keys[gr.pg.K_w] or keys[gr.pg.K_s]):
         inputed = False
 
