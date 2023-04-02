@@ -62,13 +62,13 @@ while True:
                 game.points += player.pushMine(board, "down")
                 board.show(player.x, player.y + 1)
         else:
-            if keys[gr.pg.K_a]:
+            if keys[gr.pg.K_a] and board.isValid(board.data, player.y, player.x-1) and board.display[player.y][player.x-1] != True:
                 player.moveLeft()
-            elif keys[gr.pg.K_d]:
+            elif keys[gr.pg.K_d] and board.isValid(board.data, player.y, player.x+1) and board.display[player.y][player.x+1] != True:
                 player.moveRight()
-            elif keys[gr.pg.K_w]:
+            elif keys[gr.pg.K_w] and board.isValid(board.data, player.y-1, player.x) and board.display[player.y-1][player.x] != True:
                 player.moveUp()
-            elif keys[gr.pg.K_s]:
+            elif keys[gr.pg.K_s] and board.isValid(board.data, player.y+1, player.x) and board.display[player.y+1][player.x] != True:
                 player.moveDown()
         
         game.update()
