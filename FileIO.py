@@ -14,14 +14,12 @@ class FileIO:
         
         self.data = []
         f = open(layout, 'r')
-        file = f.read()
 
-        for line in file:
+        for line in f:
             row = []
             for ch in line:
                 if(ch != "\n"):
                     row.append(int(ch))
-            print(row)
             self.data.append(row)
         
         for r in range(len(self.data)):
@@ -36,7 +34,6 @@ class FileIO:
                             if(self.data[i[0]][i[1]] == 9):
                                 count += 1
                     self.data[r][c] = count
-        print(self.data)
         self.b = Board(self.data)
         f.close()
 
@@ -45,11 +42,11 @@ class FileIO:
     def getBoard(self):
         return self.b
     
-#if __name__ == "main":
-test = FileIO("testFile.txt")
-board = test.getBoard()
+if __name__ == "__main__":
+    test = FileIO("testFile.txt")
+    board = test.getBoard()
 
-for i in range(len(board)):
-    for j in range(len(board[i])):
-        print(board[i][j], end="")
-    print()
+    for i in range(len(board.data)):
+        for j in range(len(board.data[i])):
+            print(board.data[i][j], end="")
+        print()
