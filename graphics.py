@@ -54,7 +54,7 @@ def update_scale(sqrgrid):
 def draw_board(board_dat: list[list[int]], board_vis: list[list[bool]], player):
 
     # update scales
-    update_scale(4)
+    update_scale(len(board_dat))
     
     board = []
 

@@ -14,7 +14,7 @@ class Game:
             self.player = player
 
     def update(self):
-        if self.mineData.data[self.player.y][self.player.x] == -1:
+        if self.mineData.data[self.player.y][self.player.x] == 9:
             self.player.kill()
         self.player.show()
 
