@@ -59,8 +59,12 @@ class Player:
             if(board.isMine(board.data, cellWithDis2[0], cellWithDis2[1])):
                 board.changeDataAtTo(cellWithDis1[0], cellWithDis1[1], 0)
                 board.changeDataAtTo(cellWithDis2[0], cellWithDis2[1], 10)
+                return 3
             elif(board.isValid(board.data, cellWithDis2[0], cellWithDis2[1])):
                 board.moveMineAtTo(cellWithDis1[0], cellWithDis1[1], cellWithDis2[0], cellWithDis2[1])
+                return 1
+        else:
+            return -1
 
     def flag(self, board, dir):
         print("SAD")

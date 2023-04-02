@@ -3,6 +3,8 @@ from Board import Board
 
 class Game:
     def __init__(self, mineData=None, player=None):
+        self.points = 0
+        
         if mineData is None:
             self.mineData = Board()
         else:
