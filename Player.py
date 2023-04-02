@@ -35,9 +35,16 @@ class Player:
         self.isDead = True
 #board.changeMineAtTo(board, self.y - 1, self.x, self.y - 2, self.x)
     def pushMine(self, board, dir):
+        cellsAtDirWithDis1 = [(self.y - 1, self.x), (self.y + 1, self.x),
+                          (self.y, self.x + 1), (self.y, self.x - 1)]
+        cellsAtDirWithDis2 = [(self.y - 2, self.x), (self.y + 2, self.x),
+                          (self.y, self.x + 2), (self.y, self.x - 2)]
         if dir == "up":
+            #cellWithDis1 = cellsAtDirWithDis1[0]
+
             if(board.isMine(board.data, self.y - 1, self.x)):
                 if(board.isMine(board.data, self.y - 2, self.x)):
+                    board.changeDataAtTo(self.y - 1, self.x, 0)
                     board.changeDataAtTo(self.y - 2, self.x, 10)
                 elif(board.isValid(board.data, self.y - 2, self.x)):
                     board.moveMineAtTo(self.y - 1, self.x, self.y - 2, self.x)
@@ -45,6 +52,7 @@ class Player:
         if dir == "down":
             if(board.isMine(board.data, self.y + 1, self.x)):
                 if(board.isMine(board.data, self.y + 2, self.x)):
+                    board.changeDataAtTo(self.y + 1, self.x, 0)
                     board.changeDataAtTo(self.y + 2, self.x, 10)
                 elif(board.isValid(board.data, self.y + 2, self.x)):
                     board.moveMineAtTo(self.y + 1, self.x, self.y + 2, self.x)
@@ -52,13 +60,29 @@ class Player:
         if dir == "right":
             if(board.isMine(board.data, self.y, self.x + 1)):
                 if(board.isMine(board.data, self.y, self.x + 2)):
+                    board.changeDataAtTo(self.y, self.x + 1, 0)
                     board.changeDataAtTo(self.y, self.x + 2, 10)
                 elif(board.isValid(board.data, self.y, self.x + 2)):
                     board.moveMineAtTo(self.y, self.x + 1, self.y, self.x + 2)
         if dir == "left":
             if(board.isMine(board.data, self.y, self.x - 1)):
                 if(board.isMine(board.data, self.y, self.x - 2)):
+                    board.changeDataAtTo(self.y, self.x - 1, 0)
                     board.changeDataAtTo(self.y, self.x - 2, 10)
                 elif(board.isValid(board.data, self.y, self.x - 2)):
-                    board.moveMineAtTo(self.y, self.x + 1, self.y, self.x - 2)
+                    board.moveMineAtTo(self.y, self.x - 1, self.y, self.x - 2)
 
+    def flag(self, board, dir):
+        if dir == "up":
+            if(board.isValid(board.data, self.y - 1, self.x)):
+                board.changeDataAtTo(self.y - 1, self.x, -1 * board.data)   
+        if dir == "down":
+            if(board.isValid(board.data, self.y + 1, self.x)):
+                board.changeDataAtTo(self.y + 1, self.x,  -1 * board.data)
+        if dir == "right":
+            if(board.isValid(board.data, self.y, self.x + 1)):
+                board.changeDataAtTo(self.y, self.x + 1,  -1 * board.data)
+        if dir == "left":
+            if(board.isValid(board.data, self.y, self.x - 1)):
+                board.changeDataAtTo(self.y, self.x - 1,  -1 * board.data)
+                
