@@ -5,18 +5,26 @@ class Player:
         self.isDead = False
 
     def moveUp(self):
+        if self.isDead:
+            return
         if self.y - 1 >= 0:
             self.y -= 1
 
     def moveDown(self):
+        if self.isDead:
+            return
         if self.y + 1 < 16:
             self.y += 1
 
     def moveLeft(self):
+        if self.isDead:
+            return
         if self.x - 1 >= 0:
             self.x -= 1
 
     def moveRight(self):
+        if self.isDead:
+            return
         if self.x + 1 < 16:
             self.x += 1
 

@@ -11,3 +11,4 @@ class Board:
 
     def show(self, x:int, y:int):
         self.display[y][x] = True
+
