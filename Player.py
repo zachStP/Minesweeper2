@@ -65,14 +65,14 @@ class Player:
     def flag(self, board, dir):
         if dir == "up":
             if(board.isValid(board.data, self.y - 1, self.x)):
-                board.changeDataAtTo(self.y - 1, self.x, -1 * board.data[self.y - 1][self.x])   
+                board.display[self.y - 1][self.x] = not board.display[self.y - 1][self.x]
         if dir == "down":
             if(board.isValid(board.data, self.y + 1, self.x)):
-                board.changeDataAtTo(self.y + 1, self.x,  -1 * board.data[self.y + 1][self.x])
+                board.display[self.y + 1][self.x] = not board.display[self.y + 1][self.x]
         if dir == "right":
             if(board.isValid(board.data, self.y, self.x + 1)):
-                board.changeDataAtTo(self.y, self.x + 1,  -1 * board.data[self.y][self.x + 1])
+                board.display[self.y][self.x + 1] = not board.display[self.y][self.x + 1]
         if dir == "left":
             if(board.isValid(board.data, self.y, self.x - 1)):
-                board.changeDataAtTo(self.y, self.x - 1,  -1 * board.data[self.y][self.x - 1])
+                board.data[self.y][self.x - 1] = not board.data[self.y][self.x - 1]
                 
