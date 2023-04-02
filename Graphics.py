@@ -29,14 +29,17 @@ display = pg.display.set_mode((width, height), pg.RESIZABLE)
 
 player_ico = pg.image.load("assets/player.png").convert_alpha()
 sprite = pg.transform.smoothscale(pg.image.load("assets/sprite.png"), (64, 64,)).convert_alpha()
+sprite_c = pg.transform.smoothscale(pg.image.load("assets/sprite_canberry.png"), (64, 64,)).convert_alpha()
+
 
 numarr = []
 for i in range(8):
     numarr.append(pg.transform.smoothscale(pg.image.load("assets/num" + str(i + 1) + ".png"), (64, 64,)).convert_alpha())
 
 def ico_scale():
-    global numarr, sprite, crush, player_ico
+    global numarr, sprite, sprite_c, player_ico
     sprite = pg.transform.smoothscale(pg.image.load("assets/sprite.png"), (tile_size, tile_size)).convert_alpha()
+    sprite_c = pg.transform.smoothscale(pg.image.load("assets/sprite_canberry.png"), (tile_size, tile_size)).convert_alpha()
 
     player_ico = pg.transform.smoothscale(pg.image.load("assets/player.png"), (tile_size - t_padding, tile_size - t_padding)).convert_alpha()
 
@@ -118,6 +121,13 @@ def draw_board(board_dat: list[list[int]], board_vis: list[list[bool]], player):
                     tile_size - t_padding, tile_size - t_padding))
                 
                 display.blit(sprite,
+                    (posx + t_padding / 2, posy + t_padding / 2))
+            # 10 = crushed mine
+            if board[row][col] == 10:
+                pg.draw.rect(display, (100, 0, 0), (posx + t_padding / 2, posy + t_padding / 2,
+                    tile_size - t_padding, tile_size - t_padding))
+                
+                display.blit(sprite_c,
                     (posx + t_padding / 2, posy + t_padding / 2))
             # 1-8 = clear
             elif board[row][col] >= 1 and board[row][col] <= 8:

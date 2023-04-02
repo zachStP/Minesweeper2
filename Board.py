@@ -41,7 +41,7 @@ class Board:
                     (r    , c - 1),                (r    , c + 1),
                     (r + 1, c - 1), (r + 1, c   ), (r + 1, c + 1)]
         for i in neighbors:
-            if(self.isValid(self.data[i[0]][i[1]])):
+            if(self.isValid(self.data, i[0], i[1])):
                 self.countNeighborMines(i[0], i[1])
 
     def changeDataAtTo(self, r, c, value):
