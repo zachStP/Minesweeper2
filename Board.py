@@ -1,13 +1,34 @@
+if __name__ == "__main__":
+    import main
 
 class Board:
     def __init__(self, data):
+        self.data = []
+        self.display = []
+        
         if data is None:
-            self.data = [[0 for j in range(16)] for i in range(16)]
-            self.display = [[0 for j in range(16)] for i in range(16)]
+            for r in range(len(data)):
+                row = []
+                for c in range(len(data[r])):
+                    row.append(0)
+                self.data.append(row)
+                self.display.append(row)
+
+            """self.data = [[0 for j in range(16)] for i in range(16)]
+            self.display = [[0 for j in range(16)] for i in range(16)]"""
             return
         else:
-            self.data = [[data[i][j] for j in range(16)] for i in range(16)]
-            self.display = [[False for j in range(16)] for i in range(16)]
+            for r in range(len(data)):
+                dataRow = []
+                displayRow = []
+                for c in range(len(data[r])):
+                    dataRow.append(data[r][c])
+                    displayRow.append(False)
+                self.data.append(dataRow)
+                self.display.append(displayRow)
+                    
+            """self.data = [[data[i][j] for j in range(16)] for i in range(16)]
+            self.display = [[False for j in range(16)] for i in range(16)]"""
 
     def isValid(self, plane, r, c):
         if(r >= 0 and r < len(plane)):
